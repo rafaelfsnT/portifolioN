@@ -58,7 +58,7 @@ export default function Home() {
       <Container>
         <Head>
           <title>Portifólio RFL</title>
-          <link rel="icon" href="/img/logo.png" />
+          <link rel="icon" href="/favicon.ico" type="image/png" />
         </Head>
 
         <HomeSection id="inicio">
