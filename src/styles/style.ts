@@ -3,25 +3,15 @@ import styled from 'styled-components';
 // Container principal
 export const Container = styled.div`
   background-color: #131313;
-  color: #fff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 `;
 
-// Navbar
-export const Navbar = styled.nav`
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-`;
-
 // Link estilizado
 export const LinkStyled = styled.a`
-  color: #7F00FF;
-  font-size: 20px;
+  color: #f0f0f0;
+  font-size: 25px;
   border: 2px solid #7F00FF;
   border-radius: 30px;
   padding: 5px 20px;
@@ -30,10 +20,19 @@ export const LinkStyled = styled.a`
   transition: 0.4s;
 
   &:hover {
-    color: aliceblue;
-    font-size: 23px;
+    color: #7F00FF;
+    opacity: 0.2s;
   }
 `;
+
+export const NavbarLink = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+
+  
+`;
+
 
 // Avatar
 export const Avatar = styled.div`
@@ -57,35 +56,38 @@ export const HomeSection = styled.section`
 
   h1 {
     color: #7F00FF;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
 
   h2 {
-    margin: 0;
-    font-size: 1.5rem;
+    margin: 2rem; 
+    font-size: 1.6rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: aliceblue;
     white-space: nowrap;
     overflow: hidden;
     border-right: 2px solid;
     animation: blink-caret 0.75s step-end infinite;
     display: inline-block;
-    height: 1.5em;
-    line-height: 1.5em;
+    height: 2rem;
+    line-height: 2rem;
   }
 `;
 
 // Ícones
 export const Icons = styled.div`
   text-align: center;
-  padding: 20px;
+  padding: 40px;
 
   a {
     color: #7F00FF;
-    font-size: 3em;
-    margin-right: 80px;
     transition: opacity 0.5s;
-
+  
+    font-size: 1.5rem;
+    margin-right: 100px;
+    
     &:hover {
-      opacity: 0.2;
+      opacity: 0.2 ;
     }
 
     &:last-child {
@@ -94,23 +96,6 @@ export const Icons = styled.div`
   }
 `;
 
-// Links da Navbar
-export const NavbarLink = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-
-  ${LinkStyled} {
-    margin: 0 15px;
-    font-size: 2em;
-    color: aliceblue;
-    transition: 0.5s;
-
-    &:hover {
-      color: #7F00FF;
-    }
-  }
-`;
 
 // Seção Sobre
 export const SobreSection = styled.section`
