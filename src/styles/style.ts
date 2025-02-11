@@ -2,67 +2,35 @@ import styled from 'styled-components';
 
 // Container principal
 export const Container = styled.div`
-  background-color: #131313;
+   background-color: #131313;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative; /* Permite que o círculo seja posicionado relativamente a esse container */
 `;
-
-// Link estilizado
-export const LinkStyled = styled.a`
-  color: #f0f0f0;
-  font-size: 25px;
-  border: 2px solid #7F00FF;
-  border-radius: 30px;
-  padding: 5px 20px;
-  margin-right: 30px;
-  text-decoration: none;
-  transition: 0.4s;
-
-  &:hover {
-    color: #7F00FF;
-    opacity: 0.2s;
-  }
-`;
-
-export const NavbarLink = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-
-  
-`;
-
-
-// Avatar
-export const Avatar = styled.div`
-  width: 180px;
-  height: 180px;
-  border-radius: 100%;
-  overflow: hidden;
-  margin: 0 auto;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-`;
-
 // Seção Home
 export const HomeSection = styled.section`
-  text-align: center;
-  padding-top: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 200px;
+  min-height: 100vh;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+  }
 
   h1 {
     color: #7F00FF;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2.4rem;
   }
 
   h2 {
-    margin: 2rem; 
-    font-size: 1.6rem;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 2rem;
+    font-size: 1.8rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: aliceblue;
     white-space: nowrap;
     overflow: hidden;
@@ -71,6 +39,49 @@ export const HomeSection = styled.section`
     display: inline-block;
     height: 2rem;
     line-height: 2rem;
+  }
+`;
+
+// Wrapper para dividir a Home em duas colunas
+export const HomeContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+  }
+`;
+
+// Estilização da Coluna de Texto
+export const TextColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* Centraliza o texto */
+  text-align: center;
+  flex: 1;
+
+
+  @media (max-width: 768px) {
+    align-items: center;
+  }
+`;
+
+// Estilização da Coluna de Imagem (Move para a direita)
+export const ImageColumn = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;  /* Move a imagem para a direita */
+  align-items: center;
+  margin-left: auto; /* Empurra a imagem ainda mais para a direita */
+
+  @media (max-width: 768px) {
+    justify-content: center; /* Centraliza a imagem em telas menores */
+    margin-left: 0;
   }
 `;
 
@@ -96,23 +107,38 @@ export const Icons = styled.div`
   }
 `;
 
-
-// Seção Sobre
-export const SobreSection = styled.section`
-  padding-top: 450px;
-  color: #7F00FF;
-
-  h1 {
-    color: #7F00FF;
-  }
-
-  h3 {
-    color: aliceblue;
-  }
+// Container do Navbar para manter alinhado
+export const NavbarContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 `;
 
-// Container estilizado para seções
-export const ContainerStyled = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
+// Estilização dos links de navegação
+export const NavbarLink = styled.a`
+  color: #f0f0f0;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0 15px;
+  padding: 10px 15px;
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: 25px;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+
+  &:hover {
+    background: #7F00FF;
+    color: #fff;
+    border-color: #7F00FF;
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+    margin: 0 10px;
+    padding: 8px 12px;
+  }
 `;

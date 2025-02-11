@@ -8,10 +8,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
   Container,
-  LinkStyled,
   HomeSection,
   Icons,
-  NavbarLink,
+  HomeContent,
+  TextColumn,
+  ImageColumn, NavbarContainer, NavbarLink
 } from '../styles/style';
 
 export default function Home() {
@@ -51,55 +52,64 @@ export default function Home() {
 
     type();
   }, []);
-  
+
 
   return (
     <>
+      <Head>
+        <title>Portifólio RFL</title>
+        <link rel="icon" href="/favicon.ico" type="image/png" />
+      </Head>
+
       <Container>
-        <Head>
-          <title>Portifólio RFL</title>
-          <link rel="icon" href="/favicon.ico" type="image/png" />
-        </Head>
+
 
         <HomeSection id="inicio">
-          <h1>Rafael Fassina Dos Santos</h1>
-          <h2 ref={typewriterRef} id="typewriter">&lt; Software Developer /&gt;</h2>
+          <HomeContent>
+            {/* Coluna 1 - Texto e Ícones (Centralizados) */}
+            <TextColumn>
+              <h1>Rafael Fassina Dos Santos</h1>
+              <h2 ref={typewriterRef} id="typewriter">&lt; Software Developer /&gt;</h2>
 
-          <Icons>
-            <Link href="https://github.com/rafaelfsnT" target="_blank">
-              <FontAwesomeIcon icon={faGithub} size="2x" />
-            </Link>
-            <Link href="https://www.linkedin.com/in/rafael-fassina-dos-santos-40805626a/" target="_blank">
-              <FontAwesomeIcon icon={faLinkedin} size="2x" />
-            </Link>
-            <Link href="https://www.instagram.com/rafaelfsan/" target="_blank">
-              <FontAwesomeIcon icon={faInstagram} size="2x" />
-            </Link>
-          </Icons>
-        </HomeSection>
+              <Icons>
+                <Link href="https://github.com/rafaelfsnT" target="_blank">
+                  <FontAwesomeIcon icon={faGithub} size="2x" />
+                </Link>
+                <Link href="https://www.linkedin.com/in/rafael-fassina-dos-santos-40805626a/" target="_blank">
+                  <FontAwesomeIcon icon={faLinkedin} size="2x" />
+                </Link>
+                <Link href="https://www.instagram.com/rafaelfsan/" target="_blank">
+                  <FontAwesomeIcon icon={faInstagram} size="2x" />
+                </Link>
+              </Icons>
 
-        <NavbarLink>
-          <LinkStyled href="#sobre">Sobre</LinkStyled>
-          <LinkStyled href="#services">Serviços</LinkStyled>
-          <LinkStyled href="#contato">Contato</LinkStyled>
-        </NavbarLink>
-      </Container>
+              <NavbarContainer>
+                <NavbarLink href="#sobre">Sobre</NavbarLink>
+                <NavbarLink href="#habilidades">Habilidades</NavbarLink>
+                <NavbarLink href="#servicos">Serviços</NavbarLink>
+                <NavbarLink href="#contato">Contato</NavbarLink>
+              </NavbarContainer>
+            </TextColumn>
+
+          {/* Coluna 2 - Imagem (Empurrada para a direita) */}
+          <ImageColumn>
+            <motion.img
+              src="/memoji.png"
+              alt="Memoji"
+              width={300}
+              height={300}
+              style={{ borderRadius: '50%' }}
+              animate={{ x: [-10, 10, -10] }} // Movimento para direita e esquerda
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </ImageColumn>
+        </HomeContent>
+      </HomeSection>
+
+
+    </Container >
     </>
   );
 }
 
 
-{/* Memoji animado */ }
-{/* <motion.div
-           animate={{
-             x: [-20, 20, -20], // Movendo para a direita e esquerda
-           }}
-           transition={{
-             repeat: Infinity,
-             duration: 2,
-             ease: "easeInOut",
-           }}
-           style={{ width: 80, height: 80, margin: '20px auto' }}
-         >
-           <Image src="/memoji.png" alt="Memoji" width={80} height={80} />
-         </motion.div> */}
