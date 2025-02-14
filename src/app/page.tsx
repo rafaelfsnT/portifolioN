@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { motion } from 'framer-motion'; // Importando animação
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
 import {
   Container,
@@ -91,23 +90,27 @@ export default function Home() {
               </NavbarContainer>
             </TextColumn>
 
-          {/* Coluna 2 - Imagem (Empurrada para a direita) */}
-          <ImageColumn>
-            <motion.img
-              src="/memoji.png"
-              alt="Memoji"
-              width={300}
-              height={300}
-              style={{ borderRadius: '50%' }}
-              animate={{ x: [-10, 10, -10] }} // Movimento para direita e esquerda
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            />
-          </ImageColumn>
-        </HomeContent>
-      </HomeSection>
+            {/* Coluna 2 - Imagem (Empurrada para a direita) */}
+            <ImageColumn>
+              <motion.img
+                src="/memoji.png"
+                alt="Memoji"
+                width={300}
+                height={300}
+                style={{ borderRadius: '50%', cursor: 'pointer' }}
+                animate={{ x: [-10, 10, -10] }} // Movimento para direita e esquerda
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </ImageColumn>
+          </HomeContent>
+        </HomeSection>
 
 
-    </Container >
+        <HomeSection id="sobre">
+          <h2>Sobre Mim</h2>
+        </HomeSection>
+      </Container >
     </>
   );
 }
