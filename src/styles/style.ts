@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 // Container principal
 export const Container = styled.div`
@@ -115,6 +115,18 @@ export const NavbarContainer = styled.div`
   margin-top: 20px;
 `;
 
+const tapAnimation = keyframes`
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+`;
+
+// Animação de hover (zoom suave)
+const hoverAnimation = keyframes`
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+`;
+
 // Estilização dos links de navegação
 export const NavbarLink = styled.a`
   color: #f0f0f0;
@@ -128,12 +140,17 @@ export const NavbarLink = styled.a`
   border-radius: 25px;
   transition: all 0.3s ease-in-out;
   position: relative;
+  cursor: pointer;
 
   &:hover {
     background: #7F00FF;
     color: #fff;
     border-color: #7F00FF;
-    transform: scale(1.1);
+    animation: ${hoverAnimation} 0.2s ease-in-out forwards;
+  }
+
+  &:active {
+    animation: ${tapAnimation} 0.2s ease-in-out;
   }
 
   @media (max-width: 768px) {
