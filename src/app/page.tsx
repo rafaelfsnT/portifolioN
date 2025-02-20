@@ -1,18 +1,24 @@
-'use client'
-import { useEffect, useRef } from 'react';
+"use client";
+import { useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub, faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons";
-import { motion } from 'framer-motion'; // Importando animação
-import Head from 'next/head';
-import Link from 'next/link';
+import {
+  faGithub,
+  faLinkedin,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons";
+import { motion } from "framer-motion"; // Importando animação
+import Head from "next/head";
+import Link from "next/link";
 import {
   Container,
   HomeSection,
   Icons,
   HomeContent,
   TextColumn,
-  ImageColumn, NavbarContainer, NavbarLink
-} from '../styles/style';
+  ImageColumn,
+  NavbarContainer,
+  NavbarLink,
+} from "../styles/style";
 
 export default function Home() {
   const typewriterRef = useRef<HTMLHeadingElement | null>(null); // Define corretamente o tipo do useRef
@@ -52,7 +58,6 @@ export default function Home() {
     type();
   }, []);
 
-
   return (
     <>
       <Head>
@@ -61,23 +66,29 @@ export default function Home() {
       </Head>
 
       <Container>
-
-
         <HomeSection id="inicio">
           <HomeContent>
             {/* Coluna 1 - Texto e Ícones (Centralizados) */}
             <TextColumn>
               <h1>Rafael Fassina Dos Santos</h1>
-              <h2 ref={typewriterRef} id="typewriter">&lt; Software Developer /&gt;</h2>
+              <h2 ref={typewriterRef} id="typewriter">
+                &lt; Software Developer /&gt;
+              </h2>
 
               <Icons>
                 <Link href="https://github.com/rafaelfsnT" target="_blank">
                   <FontAwesomeIcon icon={faGithub} size="2x" />
                 </Link>
-                <Link href="https://www.linkedin.com/in/rafael-fassina-dos-santos-40805626a/" target="_blank">
+                <Link
+                  href="https://www.linkedin.com/in/rafael-fassina-dos-santos-40805626a/"
+                  target="_blank"
+                >
                   <FontAwesomeIcon icon={faLinkedin} size="2x" />
                 </Link>
-                <Link href="https://www.instagram.com/rafaelfsan/" target="_blank">
+                <Link
+                  href="https://www.instagram.com/rafaelfsan/"
+                  target="_blank"
+                >
                   <FontAwesomeIcon icon={faInstagram} size="2x" />
                 </Link>
               </Icons>
@@ -97,22 +108,28 @@ export default function Home() {
                 alt="Memoji"
                 width={300}
                 height={300}
-                style={{ borderRadius: '50%', cursor: 'pointer' }}
+                style={{ borderRadius: "50%", cursor: "pointer" }}
                 animate={{ x: [-10, 10, -10] }} // Movimento para direita e esquerda
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
               />
             </ImageColumn>
           </HomeContent>
         </HomeSection>
 
-
         <HomeSection id="sobre">
-          <h2>Sobre Mim</h2>
+          <h1>Sobre Mim</h1>
+          <p>
+            Hello World, me chamo Rafael, sou brasileiro, e atualmente sou
+            desenvolvedor. Procuro estar sempre aprimorando minhas habilidades e
+            conhecer novas tecnologias. Procuro atuar na área de desenvolvimento
+            Mobile e Web.
+          </p>
         </HomeSection>
-      </Container >
+      </Container>
     </>
   );
 }
-
-

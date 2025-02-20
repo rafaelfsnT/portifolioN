@@ -2,7 +2,7 @@ import styled, { keyframes } from 'styled-components';
 
 // Container principal
 export const Container = styled.div`
-   background-color: #131313;
+   background-color: #1e1e1e;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -11,9 +11,10 @@ export const Container = styled.div`
 // Seção Home
 export const HomeSection = styled.section`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 200px;
+  padding-top: 100px;
   min-height: 100vh;
 
   @media (max-width: 768px) {
@@ -23,14 +24,14 @@ export const HomeSection = styled.section`
 
   h1 {
     color: #7F00FF;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: 2.4rem;
   }
 
   h2 {
     margin: 2rem;
     font-size: 1.8rem;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     color: aliceblue;
     white-space: nowrap;
     overflow: hidden;
@@ -40,6 +41,25 @@ export const HomeSection = styled.section`
     height: 2rem;
     line-height: 2rem;
   }
+    p {
+    color: aliceblue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.2rem;  /* Ajustei para tamanho mais adequado */
+    line-height: 1.8rem;  /* Maior espaçamento entre linhas para melhor legibilidade */
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0 20px;  /* Espaçamento lateral para evitar que o texto encoste nas bordas em telas pequenas */
+    max-width: 800px;  /* Limita a largura para uma melhor leitura */
+    text-align: justify;  /* Melhora a justificação do texto */
+    letter-spacing: 0.5px;  /* Leve espaçamento nas letras para clareza */
+  }
+
+  @media (max-width: 768px) {
+    p {
+      font-size: 1.1rem;  /* Ajuste para telas menores */
+      padding: 0 10px;  /* Menos espaçamento nas laterais em telas pequenas */
+    }
+  } 
 `;
 
 // Wrapper para dividir a Home em duas colunas
@@ -65,9 +85,23 @@ export const TextColumn = styled.div`
   text-align: center;
   flex: 1;
 
-
   @media (max-width: 768px) {
     align-items: center;
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 15ch; /* Tamanho do texto que será digitado */
+    }
+  }
+
+  @keyframes blink-caret {
+    50% {
+      border-color: transparent;
+    }
   }
 `;
 
@@ -132,7 +166,7 @@ export const NavbarLink = styled.a`
   color: #f0f0f0;
   font-size: 20px;
   font-weight: bold;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   margin: 0 15px;
   padding: 10px 15px;
   text-decoration: none;
