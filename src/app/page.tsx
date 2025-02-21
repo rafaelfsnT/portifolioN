@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGithub,
@@ -18,11 +18,14 @@ import {
   ImageColumn,
   NavbarContainer,
   NavbarLink,
+  HabilidadesSection,
+  ButtonHabilidades,
 } from "../styles/style";
 
 export default function Home() {
   const typewriterRef = useRef<HTMLHeadingElement | null>(null); // Define corretamente o tipo do useRef
-
+  const [isHabilidadesVisible, setIsHabilidadesVisible] = useState(false);
+  
   useEffect(() => {
     const typewriter = typewriterRef.current;
     if (!typewriter) return; // Garante que o elemento existe antes de acessar
@@ -54,10 +57,12 @@ export default function Home() {
         }
       }
     }
-
     type();
   }, []);
 
+  const handleToggleHabilidades = () => {
+    setIsHabilidadesVisible(!isHabilidadesVisible); // Alterna a visibilidade
+  };
   return (
     <>
       <Head>
@@ -128,7 +133,38 @@ export default function Home() {
             conhecer novas tecnologias. Procuro atuar na área de desenvolvimento
             Mobile e Web.
           </p>
+          <ButtonHabilidades onClick={handleToggleHabilidades}>
+            {isHabilidadesVisible ? "Esconder Habilidades" : "Ver Habilidades"}
+          </ButtonHabilidades>
         </HomeSection>
+
+        {/* Quadro de habilidades com animação */}
+        <HabilidadesSection
+          initial={{ opacity: 0, y: -50 }} // Inicialmente invisível e deslocado para cima
+          animate={{
+            opacity: isHabilidadesVisible ? 1 : 0, // Mostra ou esconde com transição
+            y: isHabilidadesVisible ? 0 : -50, // Desliza de volta para cima ao esconder
+          }}
+          transition={{
+            duration: 0.5, // Duração da animação
+            ease: "easeInOut", // Suavização da animação
+          }}
+        >
+          {isHabilidadesVisible && (
+            <>
+              <h2>Minhas Habilidades</h2>
+              <ul>
+                <li>JavaScript</li>
+                <li>React</li>
+                <li>Next.js</li>
+                <li>Node.js</li>
+                <li>CSS e Styled Components</li>
+                <li>Git e GitHub</li>
+                {/* Adicione mais habilidades conforme necessário */}
+              </ul>
+            </>
+          )}
+        </HabilidadesSection>
       </Container>
     </>
   );

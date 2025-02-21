@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { motion } from "framer-motion";
 
 // Container principal
 export const Container = styled.div`
@@ -6,7 +7,6 @@ export const Container = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  position: relative; /* Permite que o círculo seja posicionado relativamente a esse container */
 `;
 // Seção Home
 export const HomeSection = styled.section`
@@ -44,20 +44,20 @@ export const HomeSection = styled.section`
     p {
     color: aliceblue;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 1.2rem;  /* Ajustei para tamanho mais adequado */
-    line-height: 1.8rem;  /* Maior espaçamento entre linhas para melhor legibilidade */
+    font-size: 1.2rem;  
+    line-height: 1.8rem; 
     margin-top: 1rem;
     margin-bottom: 1rem;
-    padding: 0 20px;  /* Espaçamento lateral para evitar que o texto encoste nas bordas em telas pequenas */
-    max-width: 800px;  /* Limita a largura para uma melhor leitura */
-    text-align: justify;  /* Melhora a justificação do texto */
-    letter-spacing: 0.5px;  /* Leve espaçamento nas letras para clareza */
+    padding: 0 20px; 
+    max-width: 800px; 
+    text-align: justify; 
+    letter-spacing: 0.5px;  
   }
 
   @media (max-width: 768px) {
     p {
-      font-size: 1.1rem;  /* Ajuste para telas menores */
-      padding: 0 10px;  /* Menos espaçamento nas laterais em telas pequenas */
+      font-size: 1.1rem;
+      padding: 0 10px; 
     }
   } 
 `;
@@ -81,7 +81,7 @@ export const HomeContent = styled.div`
 export const TextColumn = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;  /* Centraliza o texto */
+  align-items: center; 
   text-align: center;
   flex: 1;
 
@@ -94,7 +94,7 @@ export const TextColumn = styled.div`
       width: 0;
     }
     to {
-      width: 15ch; /* Tamanho do texto que será digitado */
+      width: 15ch;
     }
   }
 
@@ -109,12 +109,12 @@ export const TextColumn = styled.div`
 export const ImageColumn = styled.div`
   flex: 1;
   display: flex;
-  justify-content: flex-end;  /* Move a imagem para a direita */
+  justify-content: flex-end; 
   align-items: center;
-  margin-left: auto; /* Empurra a imagem ainda mais para a direita */
+  margin-left: auto; 
 
   @media (max-width: 768px) {
-    justify-content: center; /* Centraliza a imagem em telas menores */
+    justify-content: center;
     margin-left: 0;
   }
 `;
@@ -192,4 +192,33 @@ export const NavbarLink = styled.a`
     margin: 0 10px;
     padding: 8px 12px;
   }
+`;
+
+export const ButtonHabilidades = styled.button`
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #7F00FF;
+  color: aliceblue;
+  border: none; 
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #555;
+  }
+`;
+
+// Seção de Habilidades com animação
+export const HabilidadesSection = styled(motion.div)`
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0; /* Inicialmente invisível */
+  transform: translateY(-50px); /* Inicialmente deslocado para cima */
+  transition: all 0.5s ease-in-out; /* Transição suave */
 `;
