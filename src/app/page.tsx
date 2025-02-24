@@ -18,14 +18,11 @@ import {
   ImageColumn,
   NavbarContainer,
   NavbarLink,
-  HabilidadesSection,
-  ButtonHabilidades,
 } from "../styles/style";
 
 export default function Home() {
   const typewriterRef = useRef<HTMLHeadingElement | null>(null); // Define corretamente o tipo do useRef
-  const [isHabilidadesVisible, setIsHabilidadesVisible] = useState(false);
-  
+
   useEffect(() => {
     const typewriter = typewriterRef.current;
     if (!typewriter) return; // Garante que o elemento existe antes de acessar
@@ -60,9 +57,6 @@ export default function Home() {
     type();
   }, []);
 
-  const handleToggleHabilidades = () => {
-    setIsHabilidadesVisible(!isHabilidadesVisible); // Alterna a visibilidade
-  };
   return (
     <>
       <Head>
@@ -127,44 +121,40 @@ export default function Home() {
 
         <HomeSection id="sobre">
           <h1>Sobre Mim</h1>
-          <p>
-            Hello World, me chamo Rafael, sou brasileiro, e atualmente sou
-            desenvolvedor. Procuro estar sempre aprimorando minhas habilidades e
-            conhecer novas tecnologias. Procuro atuar na área de desenvolvimento
-            Mobile e Web.
-          </p>
-          <ButtonHabilidades onClick={handleToggleHabilidades}>
-            {isHabilidadesVisible ? "Esconder Habilidades" : "Ver Habilidades"}
-          </ButtonHabilidades>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center"
+            }}
+          >
+            <div style={{ flex: 1 }}>
+              <img
+                src="/perfil2.jpeg" // Substitua pelo caminho da sua imagem
+                alt="Rafael"
+                style={{
+                  width: "300px",
+                  height: "300px",
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                  border: "2px solid #7f00ff", // Ajuste a borda, se necessário
+                }}
+              />
+            </div>
+            <div style={{ flex: 1 }}>
+              <p>
+                Olá! Meu nome é Rafael, sou desenvolvedor brasileiro, apaixonado
+                por tecnologia e inovação. Atualmente, estou focado no
+                aprimoramento contínuo das minhas habilidades e no aprendizado
+                de novas ferramentas e tecnologias. Tenho grande interesse em
+                atuar nas áreas de desenvolvimento Mobile e Web, sempre buscando
+                criar soluções eficientes e de alta qualidade. Minha missão é
+                contribuir para o crescimento da tecnologia, oferecendo
+                experiências digitais únicas e funcionalmente avançadas.
+              </p>
+            </div>
+          </div>
         </HomeSection>
-
-        {/* Quadro de habilidades com animação */}
-        <HabilidadesSection
-          initial={{ opacity: 0, y: -50 }} // Inicialmente invisível e deslocado para cima
-          animate={{
-            opacity: isHabilidadesVisible ? 1 : 0, // Mostra ou esconde com transição
-            y: isHabilidadesVisible ? 0 : -50, // Desliza de volta para cima ao esconder
-          }}
-          transition={{
-            duration: 0.5, // Duração da animação
-            ease: "easeInOut", // Suavização da animação
-          }}
-        >
-          {isHabilidadesVisible && (
-            <>
-              <h2>Minhas Habilidades</h2>
-              <ul>
-                <li>JavaScript</li>
-                <li>React</li>
-                <li>Next.js</li>
-                <li>Node.js</li>
-                <li>CSS e Styled Components</li>
-                <li>Git e GitHub</li>
-                {/* Adicione mais habilidades conforme necessário */}
-              </ul>
-            </>
-          )}
-        </HabilidadesSection>
       </Container>
     </>
   );
