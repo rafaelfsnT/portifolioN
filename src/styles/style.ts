@@ -194,31 +194,3 @@ export const NavbarLink = styled.a`
   }
 `;
 
-export const ButtonHabilidades = styled.button`
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #7F00FF;
-  color: aliceblue;
-  border: none; 
-  border-radius: 5px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #555;
-  }
-`;
-
-// Seção de Habilidades com animação
-export const HabilidadesSection = styled(motion.div)`
-  margin-top: 30px;
-  padding: 20px;
-  background-color: #f4f4f4;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
-  opacity: 0; /* Inicialmente invisível */
-  transform: translateY(-50px); /* Inicialmente deslocado para cima */
-  transition: all 0.5s ease-in-out; /* Transição suave */
-`;
