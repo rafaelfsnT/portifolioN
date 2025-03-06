@@ -6,7 +6,8 @@ import {
   faLinkedin,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
-import { motion } from "framer-motion"; // Importando animação
+
+import { motion } from "framer-motion";
 import Head from "next/head";
 import Link from "next/link";
 import {
@@ -22,10 +23,11 @@ import {
 
 export default function Home() {
   const typewriterRef = useRef<HTMLHeadingElement | null>(null); // Define corretamente o tipo do useRef
+  
 
   useEffect(() => {
     const typewriter = typewriterRef.current;
-    if (!typewriter) return; // Garante que o elemento existe antes de acessar
+    if (!typewriter) return;
 
     const text = "< Software Developer />";
     let index = 0;
@@ -42,7 +44,7 @@ export default function Home() {
           setTimeout(type, 75);
         } else {
           isAdding = false;
-          setTimeout(type, 1000); // Pausa antes de apagar
+          setTimeout(type, 1000);
         }
       } else {
         if (index > 0) {
@@ -50,12 +52,23 @@ export default function Home() {
           setTimeout(type, 75);
         } else {
           isAdding = true;
-          setTimeout(type, 1000); // Pausa antes de digitar novamente
+          setTimeout(type, 1000);
         }
       }
     }
     type();
+
+   
   }, []);
+
+
+  // Função para rolar para uma seção sem alterar a URL
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <>
@@ -65,9 +78,113 @@ export default function Home() {
       </Head>
 
       <Container>
-        <HomeSection id="inicio">
+        {/* Navbar fixa no topo e alinhada à direita */}
+        <NavbarContainer
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            zIndex: 10,
+            padding: "10px",
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "center",
+            backgroundColor: "transparent",
+            boxShadow: "0 2px 15px rgba(0, 0, 0, 0.1)",
+            transition: "background-color 0.3s ease",
+          }}
+        >
+          {/* Links da Navbar */}
+          <NavbarLink
+            onClick={() => scrollToSection("inicio")}
+            style={{
+              color: "aliceblue",
+              marginLeft: "30px",
+              cursor: "pointer",
+              fontSize: "16px",
+              fontWeight: "500",
+              transition: "color 0.3s ease, transform 0.3s ease",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "scale(1.1)")
+            }
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+          >
+            Início
+          </NavbarLink>
+          <NavbarLink
+            onClick={() => scrollToSection("sobre")}
+            style={{
+              color: "aliceblue",
+              marginLeft: "30px",
+              cursor: "pointer",
+              fontSize: "16px",
+              fontWeight: "500",
+              transition: "color 0.3s ease, transform 0.3s ease",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "scale(1.1)")
+            }
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+          >
+            Sobre
+          </NavbarLink>
+          <NavbarLink
+            onClick={() => scrollToSection("habilidades")}
+            style={{
+              color: "aliceblue",
+              marginLeft: "30px",
+              cursor: "pointer",
+              fontSize: "16px",
+              fontWeight: "500",
+              transition: "color 0.3s ease, transform 0.3s ease",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "scale(1.1)")
+            }
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+          >
+            Habilidades
+          </NavbarLink>
+          <NavbarLink
+            onClick={() => scrollToSection("servicos")}
+            style={{
+              color: "aliceblue",
+              marginLeft: "30px",
+              cursor: "pointer",
+              fontSize: "16px",
+              fontWeight: "500",
+              transition: "color 0.3s ease, transform 0.3s ease",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "scale(1.1)")
+            }
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+          >
+            Serviços
+          </NavbarLink>
+          <NavbarLink
+            onClick={() => scrollToSection("contato")}
+            style={{
+              color: "aliceblue",
+              marginLeft: "30px",
+              cursor: "pointer",
+              fontSize: "16px",
+              fontWeight: "500",
+              transition: "color 0.3s ease, transform 0.3s ease",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "scale(1.1)")
+            }
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+          >
+            Contato
+          </NavbarLink>
+        </NavbarContainer>
+
+        <HomeSection id="inicio" style={{ paddingTop: "80px" }}>
           <HomeContent>
-            {/* Coluna 1 - Texto e Ícones (Centralizados) */}
             <TextColumn>
               <h1>Rafael Fassina Dos Santos</h1>
               <h2 ref={typewriterRef} id="typewriter">
@@ -91,16 +208,8 @@ export default function Home() {
                   <FontAwesomeIcon icon={faInstagram} size="2x" />
                 </Link>
               </Icons>
-
-              <NavbarContainer>
-                <NavbarLink href="#sobre">Sobre</NavbarLink>
-                <NavbarLink href="#habilidades">Habilidades</NavbarLink>
-                <NavbarLink href="#servicos">Serviços</NavbarLink>
-                <NavbarLink href="#contato">Contato</NavbarLink>
-              </NavbarContainer>
             </TextColumn>
 
-            {/* Coluna 2 - Imagem (Empurrada para a direita) */}
             <ImageColumn>
               <motion.img
                 src="/memoji.png"
@@ -108,7 +217,7 @@ export default function Home() {
                 width={300}
                 height={300}
                 style={{ borderRadius: "50%", cursor: "pointer" }}
-                animate={{ x: [-10, 10, -10] }} // Movimento para direita e esquerda
+                animate={{ x: [-10, 10, -10] }}
                 transition={{
                   duration: 3,
                   repeat: Infinity,
@@ -119,25 +228,25 @@ export default function Home() {
           </HomeContent>
         </HomeSection>
 
-        <HomeSection id="sobre">
+        <HomeSection id="sobre" style={{ marginTop: "50px" }}>
           <h1>Sobre Mim</h1>
           <div
             style={{
               display: "flex",
               justifyContent: "space-between",
-              alignItems: "center"
+              alignItems: "center",
             }}
           >
             <div style={{ flex: 1 }}>
               <img
-                src="/perfil2.jpeg" // Substitua pelo caminho da sua imagem
+                src="/perfil2.jpeg"
                 alt="Rafael"
                 style={{
                   width: "300px",
                   height: "300px",
                   borderRadius: "50%",
                   objectFit: "cover",
-                  border: "2px solid #7f00ff", // Ajuste a borda, se necessário
+                  border: "2px solid #7f00ff",
                 }}
               />
             </div>
@@ -155,6 +264,12 @@ export default function Home() {
             </div>
           </div>
         </HomeSection>
+
+        <HomeSection id="habilidades">
+          <h1>Habilidades</h1>
+        </HomeSection>
+
+      
       </Container>
     </>
   );
