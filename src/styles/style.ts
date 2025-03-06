@@ -1,5 +1,4 @@
 import styled, { keyframes } from 'styled-components';
-import { motion } from "framer-motion";
 
 // Container principal
 export const Container = styled.div`
