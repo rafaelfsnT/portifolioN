@@ -2,7 +2,7 @@ import styled, { keyframes } from 'styled-components';
 
 // Container principal
 export const Container = styled.div`
-   background-color: #1e1e1e;
+   background-color: #f4f4f4;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -31,7 +31,7 @@ export const HomeSection = styled.section`
     margin: 2rem;
     font-size: 1.8rem;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    color: aliceblue;
+    color: #7F00FF;
     white-space: nowrap;
     overflow: hidden;
     border-right: 2px solid;
@@ -41,7 +41,7 @@ export const HomeSection = styled.section`
     line-height: 2rem;
   }
     p {
-    color: aliceblue;
+    color: #9B4DFF;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.2rem;  
     line-height: 1.8rem; 
@@ -116,6 +116,7 @@ export const ImageColumn = styled.div`
     justify-content: center;
     margin-left: 0;
   }
+
 `;
 
 // Ícones
@@ -140,14 +141,21 @@ export const Icons = styled.div`
   }
 `;
 
-// Container do Navbar para manter alinhado
 export const NavbarContainer = styled.div`
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            padding: 10px;     
+            background-color: #f4f4f4 ;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1) ;
+            transition: background-color 0.3s ease;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   margin-top: 20px;
 `;
-
 const tapAnimation = keyframes`
   0% { transform: scale(1); }
   50% { transform: scale(0.95); }
@@ -159,20 +167,19 @@ const hoverAnimation = keyframes`
   0% { transform: scale(1); }
   100% { transform: scale(1.1); }
 `;
-
-// Estilização dos links de navegação
 export const NavbarLink = styled.a`
-  color: #f0f0f0;
-  font-size: 20px;
-  font-weight: bold;
+  color: #7F00FF;
+  font-size: 16px;
+  font-weight: 500;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   margin: 0 15px;
+  margin-left: 30px;
   padding: 10px 15px;
   text-decoration: none;
   border: 2px solid transparent;
   border-radius: 25px;
-  transition: all 0.3s ease-in-out;
   position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
   cursor: pointer;
 
   &:hover {
@@ -192,4 +199,6 @@ export const NavbarLink = styled.a`
     padding: 8px 12px;
   }
 `;
+
+
 
