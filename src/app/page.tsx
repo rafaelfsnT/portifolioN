@@ -9,6 +9,7 @@ import {
 import { motion } from "framer-motion";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import { FaPaintBrush, FaUsers, FaSeedling, FaBullseye } from 'react-icons/fa'; // Importando os ícones
 
 import {
@@ -20,6 +21,10 @@ import {
   ImageColumn,
   NavbarContainer,
   NavbarLink,
+  ServiceContainer,
+  ServiceCard,
+  ServiceImage,
+  ServiceTitle,
 } from "../styles/style";
 import { useEffect, useRef } from "react";
 
@@ -80,6 +85,7 @@ export default function Home() {
 
   const sortedSkills = skills.sort((a, b) => b.level - a.level);
 
+
   return (
     <>
       <Head>
@@ -89,7 +95,7 @@ export default function Home() {
 
       <Container>
         <NavbarContainer
-         
+
         >
 
           {/* Links da Navbar */}
@@ -102,7 +108,7 @@ export default function Home() {
           >
             Início
           </NavbarLink>
-          
+
           <NavbarLink
             onClick={() => scrollToSection("sobre")}
             onMouseEnter={(e) =>
@@ -132,10 +138,10 @@ export default function Home() {
           >
             Serviços
           </NavbarLink>
-          
+
           <NavbarLink
             onClick={() => scrollToSection("contato")}
-            
+
             onMouseEnter={(e) =>
               (e.currentTarget.style.transform = "scale(1.1)")
             }
@@ -145,7 +151,7 @@ export default function Home() {
           </NavbarLink>
         </NavbarContainer>
 
-        <HomeSection id="inicio" style={{ paddingTop: "80px" }}>
+        <HomeSection id="inicio" >
           <HomeContent>
             <TextColumn>
               <h1>Rafael Fassina Dos Santos</h1>
@@ -315,11 +321,10 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <FaPaintBrush size="3rem" /> {/* Ícone de pintura para Criatividade */}
+              <FaPaintBrush size="3rem" />
               <h3>Criatividade</h3>
             </motion.div>
 
-            {/* Soft Skill 2: Trabalho em Equipe */}
             <motion.div
               style={{
                 flex: "1 1 150px",
@@ -336,11 +341,10 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <FaUsers size="3rem" /> {/* Ícone de pessoas para Trabalho em Equipe */}
+              <FaUsers size="3rem" />
               <h3>Trabalho em Equipe</h3>
             </motion.div>
 
-            {/* Soft Skill 3: Adaptabilidade */}
             <motion.div
               style={{
                 flex: "1 1 150px",
@@ -357,11 +361,10 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <FaSeedling size="3rem" /> {/* Ícone de planta para Adaptabilidade */}
+              <FaSeedling size="3rem" />
               <h3>Adaptabilidade</h3>
             </motion.div>
 
-            {/* Soft Skill 4: Foco */}
             <motion.div
               style={{
                 flex: "1 1 150px",
@@ -386,6 +389,44 @@ export default function Home() {
         {/* Section Serviços */}
         <HomeSection id="servicos">
           <h1>Serviços</h1>
+          <ServiceContainer>
+            <ServiceCard>
+              <ServiceTitle>Projeto Casa da Paz Umuarama-PR (NextJS)
+              </ServiceTitle>
+              <ServiceImage src="/projeto1.png" alt="Imagem 1" />
+              <p>Esse projeto foi desenvolvido em sala em equipes. O intuito desse projeto era trazer algo mais moderno,e eles queriam que nós alunos, desenvolvessemos um site mais intuitivo. Não foi concluído 100% por questão de tempo.</p>
+              <Link
+                  href="https://github.com/rafaelfsnT/projCDP"
+                  target="_blank"
+                >
+                  Link projeto 
+                </Link>
+            </ServiceCard>
+            <ServiceCard>
+              <ServiceTitle>Projeto JavaScript</ServiceTitle>
+              <ServiceImage src="/projeto2.png" alt="Imagem 2" />
+              <p>Esse foi um projeto que tinha o incentivo de melhorar a estilização, colocar novas animações e etc. O site que usei para fazer esse projeto foi o Front End Mentor, onde você pode encontrar mais chalenges para melhorar seu CSS.</p>
+              <Link
+                  href="https://github.com/rafaelfsnT/projetoJS"
+                  target="_blank"
+
+                >
+                  Link projeto 
+                </Link>
+            </ServiceCard>
+            <ServiceCard>
+              <ServiceTitle>Projeto com Filtro de Produtos (NextJS)</ServiceTitle>
+              <ServiceImage src="/projeto3.png" alt="Imagem 3" />
+              <p>Esse projeto é as aulas que fiz de Next, aqui mostra diversos itens criados dentro de um arquivo "db.json", onde na navbar, fizemos que aparecesse somentes os produtos relacionados a determinada categoria.</p>
+              <Link
+                  href="https://github.com/rafaelfsnT/aulaNext"
+                  target="_blank"
+                >
+                  Link projeto 
+                </Link>
+            </ServiceCard>
+
+          </ServiceContainer>
         </HomeSection>
 
         {/* Section Contato */}

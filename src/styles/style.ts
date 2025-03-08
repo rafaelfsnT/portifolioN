@@ -7,31 +7,91 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 `;
+export const NavbarContainer = styled.div`
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            padding: 10px;     
+            background-color: #f4f4f4 ;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1) ;
+            transition: background-color 0.3s ease;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20px;
+`;
+const tapAnimation = keyframes`
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+`;
+
+// Animação de hover (zoom suave)
+const hoverAnimation = keyframes`
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+`;
+export const NavbarLink = styled.a`
+  color: #7F00FF;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin: 0 15px;
+  margin-left: 30px;
+  padding: 10px 15px;
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: 25px;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background: #7F00FF;
+    color: #fff;
+    border-color: #7F00FF;
+    animation: ${hoverAnimation} 0.2s ease-in-out forwards;
+  }
+
+  &:active {
+    animation: ${tapAnimation} 0.2s ease-in-out;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+    margin: 0 10px;
+    padding: 8px 12px;
+  }
+`;
+
+const commonTextStyle = `
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #7F00FF;
+`;
+
 // Seção Home
 export const HomeSection = styled.section`
-  display: flex;
+   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 100px;
+  padding-top: 80px;
   min-height: 100vh;
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    text-align: center;
-  }
-
   h1 {
+    ${commonTextStyle}
     color: #7F00FF;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-size: 2.4rem;
+    font-size: 2.5rem;
+    padding-bottom: 2.5%;
   }
 
   h2 {
-    margin: 2rem;
-    font-size: 1.8rem;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    ${commonTextStyle}
     color: #7F00FF;
+    font-size: 1.8rem;
+    margin: 2rem;
     white-space: nowrap;
     overflow: hidden;
     border-right: 2px solid;
@@ -40,7 +100,8 @@ export const HomeSection = styled.section`
     height: 2rem;
     line-height: 2rem;
   }
-    p {
+
+  p {
     color: #9B4DFF;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.2rem;  
@@ -54,13 +115,19 @@ export const HomeSection = styled.section`
   }
 
   @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+
+    h1 {
+      font-size: 2rem;
+    }
+
     p {
       font-size: 1.1rem;
-      padding: 0 10px; 
+      padding: 0 10px;
     }
   } 
 `;
-
 // Wrapper para dividir a Home em duas colunas
 export const HomeContent = styled.div`
   display: flex;
@@ -141,64 +208,50 @@ export const Icons = styled.div`
   }
 `;
 
-export const NavbarContainer = styled.div`
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 10;
-            padding: 10px;     
-            background-color: #f4f4f4 ;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1) ;
-            transition: background-color 0.3s ease;
+
+export const ServiceContainer = styled.section`
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-top: 20px;
-`;
-const tapAnimation = keyframes`
-  0% { transform: scale(1); }
-  50% { transform: scale(0.95); }
-  100% { transform: scale(1); }
+  justify-content: space-between;
+  gap: 20px;
 `;
 
-// Animação de hover (zoom suave)
-const hoverAnimation = keyframes`
-  0% { transform: scale(1); }
-  100% { transform: scale(1.1); }
-`;
-export const NavbarLink = styled.a`
-  color: #7F00FF;
-  font-size: 16px;
-  font-weight: 500;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  margin: 0 15px;
-  margin-left: 30px;
-  padding: 10px 15px;
-  text-decoration: none;
-  border: 2px solid transparent;
-  border-radius: 25px;
-  position: relative;
-  transition: color 0.3s ease, transform 0.3s ease;
-  cursor: pointer;
+export const ServiceCard = styled.div`
+  width: 30%;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1) ;
+  transition: background-color 0.3s ease;
 
-  &:hover {
-    background: #7F00FF;
-    color: #fff;
-    border-color: #7F00FF;
-    animation: ${hoverAnimation} 0.2s ease-in-out forwards;
-  }
-
-  &:active {
-    animation: ${tapAnimation} 0.2s ease-in-out;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 16px;
-    margin: 0 10px;
-    padding: 8px 12px;
+  a {
+    color: aliceblue;
+    background-color: #7F00FF;
+    padding: 10px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: auto; /* Garante que o link fique na parte inferior */
+    
+    &:hover {
+      animation: ${hoverAnimation} 0.3s ease-in-out forwards;
+      background-color: #6a00cc; /* Cor de fundo ao passar o mouse */
+    }
   }
 `;
 
+export const ServiceImage = styled.img`
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+`;
+
+export const ServiceTitle = styled.h3`
+color: #7F00FF;
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+`;
 
 
