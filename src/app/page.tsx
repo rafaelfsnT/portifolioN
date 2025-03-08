@@ -1,15 +1,16 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGithub,
   faLinkedin,
   faInstagram,
+  faReact, faNode, faCss3Alt, faJsSquare
 } from "@fortawesome/free-brands-svg-icons";
-
 import { motion } from "framer-motion";
 import Head from "next/head";
 import Link from "next/link";
+import { FaPaintBrush, FaUsers, FaSeedling, FaBullseye } from 'react-icons/fa'; // Importando os ícones
+
 import {
   Container,
   HomeSection,
@@ -20,11 +21,12 @@ import {
   NavbarContainer,
   NavbarLink,
 } from "../styles/style";
+import { useEffect, useRef } from "react";
 
 export default function Home() {
   const typewriterRef = useRef<HTMLHeadingElement | null>(null); // Define corretamente o tipo do useRef
-  
 
+  // Animação de digitar e apagar a frase
   useEffect(() => {
     const typewriter = typewriterRef.current;
     if (!typewriter) return;
@@ -58,9 +60,8 @@ export default function Home() {
     }
     type();
 
-   
-  }, []);
 
+  }, []);
 
   // Função para rolar para uma seção sem alterar a URL
   const scrollToSection = (id: string) => {
@@ -70,6 +71,15 @@ export default function Home() {
     }
   };
 
+  const skills = [
+    { name: "React", icon: faReact, level: 75 },
+    { name: "Node.js", icon: faNode, level: 80 },
+    { name: "CSS", icon: faCss3Alt, level: 70 },
+    { name: "JavaScript", icon: faJsSquare, level: 90 },
+  ];
+
+  const sortedSkills = skills.sort((a, b) => b.level - a.level);
+
   return (
     <>
       <Head>
@@ -78,34 +88,13 @@ export default function Home() {
       </Head>
 
       <Container>
-        {/* Navbar fixa no topo e alinhada à direita */}
         <NavbarContainer
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            zIndex: 10,
-            padding: "10px",
-            display: "flex",
-            justifyContent: "flex-end",
-            alignItems: "center",
-            backgroundColor: "transparent",
-            boxShadow: "0 2px 15px rgba(0, 0, 0, 0.1)",
-            transition: "background-color 0.3s ease",
-          }}
+         
         >
+
           {/* Links da Navbar */}
           <NavbarLink
             onClick={() => scrollToSection("inicio")}
-            style={{
-              color: "aliceblue",
-              marginLeft: "30px",
-              cursor: "pointer",
-              fontSize: "16px",
-              fontWeight: "500",
-              transition: "color 0.3s ease, transform 0.3s ease",
-            }}
             onMouseEnter={(e) =>
               (e.currentTarget.style.transform = "scale(1.1)")
             }
@@ -113,16 +102,9 @@ export default function Home() {
           >
             Início
           </NavbarLink>
+          
           <NavbarLink
             onClick={() => scrollToSection("sobre")}
-            style={{
-              color: "aliceblue",
-              marginLeft: "30px",
-              cursor: "pointer",
-              fontSize: "16px",
-              fontWeight: "500",
-              transition: "color 0.3s ease, transform 0.3s ease",
-            }}
             onMouseEnter={(e) =>
               (e.currentTarget.style.transform = "scale(1.1)")
             }
@@ -130,16 +112,9 @@ export default function Home() {
           >
             Sobre
           </NavbarLink>
+
           <NavbarLink
             onClick={() => scrollToSection("habilidades")}
-            style={{
-              color: "aliceblue",
-              marginLeft: "30px",
-              cursor: "pointer",
-              fontSize: "16px",
-              fontWeight: "500",
-              transition: "color 0.3s ease, transform 0.3s ease",
-            }}
             onMouseEnter={(e) =>
               (e.currentTarget.style.transform = "scale(1.1)")
             }
@@ -147,16 +122,9 @@ export default function Home() {
           >
             Habilidades
           </NavbarLink>
+
           <NavbarLink
             onClick={() => scrollToSection("servicos")}
-            style={{
-              color: "aliceblue",
-              marginLeft: "30px",
-              cursor: "pointer",
-              fontSize: "16px",
-              fontWeight: "500",
-              transition: "color 0.3s ease, transform 0.3s ease",
-            }}
             onMouseEnter={(e) =>
               (e.currentTarget.style.transform = "scale(1.1)")
             }
@@ -164,16 +132,10 @@ export default function Home() {
           >
             Serviços
           </NavbarLink>
+          
           <NavbarLink
             onClick={() => scrollToSection("contato")}
-            style={{
-              color: "aliceblue",
-              marginLeft: "30px",
-              cursor: "pointer",
-              fontSize: "16px",
-              fontWeight: "500",
-              transition: "color 0.3s ease, transform 0.3s ease",
-            }}
+            
             onMouseEnter={(e) =>
               (e.currentTarget.style.transform = "scale(1.1)")
             }
@@ -239,11 +201,11 @@ export default function Home() {
           >
             <div style={{ flex: 1 }}>
               <img
-                src="/perfil2.jpeg"
+                src="/perfil.jpg"
                 alt="Rafael"
                 style={{
                   width: "300px",
-                  height: "300px",
+                  height: "320px",
                   borderRadius: "50%",
                   objectFit: "cover",
                   border: "2px solid #7f00ff",
@@ -265,11 +227,171 @@ export default function Home() {
           </div>
         </HomeSection>
 
+        {/* Section Habilidades */}
         <HomeSection id="habilidades">
-          <h1>Habilidades</h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            Habilidades
+          </motion.h1>
+
+          <div style={{ display: "flex", gap: "30px", marginTop: "20px", flexWrap: "wrap" }}>
+            {sortedSkills.map((skill, index) => (
+              <motion.div
+                key={index}
+                style={{
+                  flex: "1 1 200px",
+                  padding: "20px",
+                  background: "#f4f4f4",
+                  borderRadius: "10px",
+                  boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 * index }}
+              >
+                <FontAwesomeIcon icon={skill.icon} size="3x" />
+                <h3>{skill.name}</h3>
+
+                <div style={{ display: "flex", alignItems: "center", width: "100%", marginTop: "10px" }}>
+                  <div
+                    style={{
+                      width: "100%",
+                      background: "#e0e0e0",
+                      borderRadius: "5px",
+                      height: "8px",
+                      position: "relative",
+                    }}
+                  >
+                    <motion.div
+                      style={{
+                        height: "100%",
+                        borderRadius: "5px",
+                        background: "#7f00ff",
+                      }}
+                      initial={{ width: 0 }}
+                      animate={{ width: `${skill.level}%` }}
+                      transition={{ duration: 1 }}
+                    />
+                  </div>
+                  <span style={{ marginLeft: "10px", fontWeight: "bold", color: "#7f00ff" }}>
+                    {skill.level}%
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            style={{ paddingTop: '5rem' }}
+          >
+            Soft Skills
+          </motion.h1>
+
+          <div style={{ display: "flex", gap: "30px", marginTop: "20px", justifyContent: "center" }}>
+            {/* Soft Skill 1: Criatividade */}
+            <motion.div
+              style={{
+                flex: "1 1 150px",
+                padding: "20px",
+                background: "#f4f4f4",
+                borderRadius: "10px",
+                boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <FaPaintBrush size="3rem" /> {/* Ícone de pintura para Criatividade */}
+              <h3>Criatividade</h3>
+            </motion.div>
+
+            {/* Soft Skill 2: Trabalho em Equipe */}
+            <motion.div
+              style={{
+                flex: "1 1 150px",
+                padding: "20px",
+                background: "#f4f4f4",
+                borderRadius: "10px",
+                boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <FaUsers size="3rem" /> {/* Ícone de pessoas para Trabalho em Equipe */}
+              <h3>Trabalho em Equipe</h3>
+            </motion.div>
+
+            {/* Soft Skill 3: Adaptabilidade */}
+            <motion.div
+              style={{
+                flex: "1 1 150px",
+                padding: "20px",
+                background: "#f4f4f4",
+                borderRadius: "10px",
+                boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <FaSeedling size="3rem" /> {/* Ícone de planta para Adaptabilidade */}
+              <h3>Adaptabilidade</h3>
+            </motion.div>
+
+            {/* Soft Skill 4: Foco */}
+            <motion.div
+              style={{
+                flex: "1 1 150px",
+                padding: "20px",
+                background: "#f4f4f4",
+                borderRadius: "10px",
+                boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <FaBullseye size="3rem" /> {/* Ícone de alvo para Foco */}
+              <h3>Foco</h3>
+            </motion.div>
+          </div>
+        </HomeSection>
+        {/* Section Serviços */}
+        <HomeSection id="servicos">
+          <h1>Serviços</h1>
         </HomeSection>
 
-      
+        {/* Section Contato */}
+        <HomeSection id="contato">
+          <h1>Contato</h1>
+        </HomeSection>
       </Container>
     </>
   );
