@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import styled, { keyframes } from 'styled-components';
 
 // Container principal
@@ -7,20 +8,36 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
 export const NavbarContainer = styled.div`
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 10;
-            padding: 10px;     
-            background-color: #f4f4f4 ;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1) ;
-            transition: background-color 0.3s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 10px 20px;     
+  background-color: #f4f4f4;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   margin-top: 20px;
+`;
+
+// Logo estilizado
+export const NavbarLogo = styled.img`
+  height: 50px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    height: 40px;
+  }
 `;
 const tapAnimation = keyframes`
   0% { transform: scale(1); }
@@ -71,7 +88,7 @@ const commonTextStyle = `
   color: #7F00FF;
 `;
 
-// Seção Home
+// Estilizações Sections
 export const HomeSection = styled.section`
    display: flex;
   flex-direction: column;
@@ -128,7 +145,7 @@ export const HomeSection = styled.section`
     }
   } 
 `;
-// Wrapper para dividir a Home em duas colunas
+
 export const HomeContent = styled.div`
   display: flex;
   align-items: center;
@@ -171,7 +188,6 @@ export const TextColumn = styled.div`
   }
 `;
 
-// Estilização da Coluna de Imagem (Move para a direita)
 export const ImageColumn = styled.div`
   flex: 1;
   display: flex;
@@ -208,7 +224,7 @@ export const Icons = styled.div`
   }
 `;
 
-
+// Serivços
 export const ServiceContainer = styled.section`
   display: flex;
   justify-content: space-between;
@@ -232,11 +248,11 @@ export const ServiceCard = styled.div`
     font-size: 1.2rem;
     display: inline-block;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    margin-top: auto; /* Garante que o link fique na parte inferior */
+    margin-top: auto; 
     
     &:hover {
       animation: ${hoverAnimation} 0.3s ease-in-out forwards;
-      background-color: #6a00cc; /* Cor de fundo ao passar o mouse */
+      background-color: #6a00cc; 
     }
   }
 `;
@@ -254,4 +270,139 @@ color: #7F00FF;
   font-weight: bold;
 `;
 
+// Page Contact
 
+export const Section = styled.section`
+  padding: 80px 20px;
+  background: linear-gradient(to bottom, #f4f4f9, #e8e8f3);
+  display: flex;
+  justify-content: center;
+`;
+
+export const InfoSection = styled.div`
+  background: #7f00ff;
+  color: aliceblue;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+
+  @media (max-width: 768px) {
+    text-align: center;
+    align-items: center;
+  }
+`;
+
+export const InfoItem = styled.p`
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+`;
+
+export const SocialIcons = styled.div`
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+`;
+
+export const SocialLink = styled.a`
+  color: white;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+`;
+
+export const FormSection = styled.div`
+  padding: 40px;
+`;
+
+export const StyledInput = styled.input`
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: border-color 0.3s;
+
+  &:focus {
+    border-color: #7f00ff;
+    outline: none;
+  }
+`;
+
+export const StyledTextarea = styled.textarea`
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: border-color 0.3s;
+
+  &:focus {
+    border-color: #7f00ff;
+    outline: none;
+  }
+`;
+
+export const SubmitButton = styled(motion.button)`
+  width: 100%;
+  padding: 14px;
+  background: #7f00ff;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+
+  &:hover {
+    background: #5900b3;
+  }
+`;
+
+// Footer
+export const FooterContainer = styled.footer`
+  background: #121212;
+  color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+`;
+export const SocialIconsFooter = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+`;
+
+export const IconLink = styled.a`
+  color: #fff;
+  font-size: 24px;
+  transition: 0.3s;
+
+  &:hover {
+    color: #7f00ff;
+    transform: scale(1.1);
+  }
+`;
+
+export const FooterText = styled.p`
+  font-size: 14px;
+  opacity: 0.7;
+`;

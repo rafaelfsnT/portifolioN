@@ -6,12 +6,12 @@ import {
   faInstagram,
   faReact, faNode, faCss3Alt, faJsSquare
 } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import Head from "next/head";
 import Link from "next/link";
-import Image from "next/image";
-import { FaPaintBrush, FaUsers, FaSeedling, FaBullseye } from 'react-icons/fa'; // Importando os ícones
-
+import { FaPaintBrush, FaUsers, FaSeedling, FaBullseye } from 'react-icons/fa'; 
+import { Mail, MapPin } from "lucide-react";
 import {
   Container,
   HomeSection,
@@ -25,11 +25,34 @@ import {
   ServiceCard,
   ServiceImage,
   ServiceTitle,
+  Section,
+  InfoSection,
+  InfoItem,
+  SocialIcons,
+  SocialLink,
+  FormSection,
+  StyledInput,
+  StyledTextarea,
+  SubmitButton,
+  FooterContainer,
+  IconLink,
+  FooterText,
+  SocialIconsFooter,
+  NavbarLogo,
 } from "../styles/style";
 import { useEffect, useRef } from "react";
 
 export default function Home() {
   const typewriterRef = useRef<HTMLHeadingElement | null>(null); // Define corretamente o tipo do useRef
+
+  const skills = [
+    { name: "React", icon: faReact, level: 75 },
+    { name: "Node.js", icon: faNode, level: 80 },
+    { name: "CSS", icon: faCss3Alt, level: 70 },
+    { name: "JavaScript", icon: faJsSquare, level: 90 },
+  ];
+
+  const sortedSkills = skills.sort((a, b) => b.level - a.level);
 
   // Animação de digitar e apagar a frase
   useEffect(() => {
@@ -76,16 +99,6 @@ export default function Home() {
     }
   };
 
-  const skills = [
-    { name: "React", icon: faReact, level: 75 },
-    { name: "Node.js", icon: faNode, level: 80 },
-    { name: "CSS", icon: faCss3Alt, level: 70 },
-    { name: "JavaScript", icon: faJsSquare, level: 90 },
-  ];
-
-  const sortedSkills = skills.sort((a, b) => b.level - a.level);
-
-
   return (
     <>
       <Head>
@@ -94,61 +107,18 @@ export default function Home() {
       </Head>
 
       <Container>
-        <NavbarContainer
-
-        >
-
-          {/* Links da Navbar */}
-          <NavbarLink
+        <NavbarContainer>
+          <NavbarLogo
+            src="/logo.png"
+            alt="Logo"
             onClick={() => scrollToSection("inicio")}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.transform = "scale(1.1)")
-            }
-            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-          >
-            Início
-          </NavbarLink>
-
-          <NavbarLink
-            onClick={() => scrollToSection("sobre")}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.transform = "scale(1.1)")
-            }
-            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-          >
-            Sobre
-          </NavbarLink>
-
-          <NavbarLink
-            onClick={() => scrollToSection("habilidades")}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.transform = "scale(1.1)")
-            }
-            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-          >
-            Habilidades
-          </NavbarLink>
-
-          <NavbarLink
-            onClick={() => scrollToSection("servicos")}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.transform = "scale(1.1)")
-            }
-            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-          >
-            Serviços
-          </NavbarLink>
-
-          <NavbarLink
-            onClick={() => scrollToSection("contato")}
-
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.transform = "scale(1.1)")
-            }
-            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-          >
-            Contato
-          </NavbarLink>
+          />
+          <div>
+            <NavbarLink onClick={() => scrollToSection("sobre")}>Sobre</NavbarLink>
+            <NavbarLink onClick={() => scrollToSection("habilidades")}>Habilidades</NavbarLink>
+            <NavbarLink onClick={() => scrollToSection("servicos")}>Serviços</NavbarLink>
+            <NavbarLink onClick={() => scrollToSection("contato")}>Contato</NavbarLink>
+          </div>
         </NavbarContainer>
 
         <HomeSection id="inicio" >
@@ -196,7 +166,7 @@ export default function Home() {
           </HomeContent>
         </HomeSection>
 
-        <HomeSection id="sobre" style={{ marginTop: "50px" }}>
+        <HomeSection id="sobre">
           <h1>Sobre Mim</h1>
           <div
             style={{
@@ -304,7 +274,6 @@ export default function Home() {
           </motion.h1>
 
           <div style={{ display: "flex", gap: "30px", marginTop: "20px", justifyContent: "center" }}>
-            {/* Soft Skill 1: Criatividade */}
             <motion.div
               style={{
                 flex: "1 1 150px",
@@ -381,11 +350,12 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <FaBullseye size="3rem" /> {/* Ícone de alvo para Foco */}
+              <FaBullseye size="3rem" />
               <h3>Foco</h3>
             </motion.div>
           </div>
         </HomeSection>
+
         {/* Section Serviços */}
         <HomeSection id="servicos">
           <h1>Serviços</h1>
@@ -396,44 +366,107 @@ export default function Home() {
               <ServiceImage src="/projeto1.png" alt="Imagem 1" />
               <p>Esse projeto foi desenvolvido em sala em equipes. O intuito desse projeto era trazer algo mais moderno,e eles queriam que nós alunos, desenvolvessemos um site mais intuitivo. Não foi concluído 100% por questão de tempo.</p>
               <Link
-                  href="https://github.com/rafaelfsnT/projCDP"
-                  target="_blank"
-                >
-                  Link projeto 
-                </Link>
+                href="https://github.com/rafaelfsnT/projCDP"
+                target="_blank"
+              >
+                Link projeto
+              </Link>
             </ServiceCard>
             <ServiceCard>
               <ServiceTitle>Projeto JavaScript</ServiceTitle>
               <ServiceImage src="/projeto2.png" alt="Imagem 2" />
               <p>Esse foi um projeto que tinha o incentivo de melhorar a estilização, colocar novas animações e etc. O site que usei para fazer esse projeto foi o Front End Mentor, onde você pode encontrar mais chalenges para melhorar seu CSS.</p>
               <Link
-                  href="https://github.com/rafaelfsnT/projetoJS"
-                  target="_blank"
+                href="https://github.com/rafaelfsnT/projetoJS"
+                target="_blank"
 
-                >
-                  Link projeto 
-                </Link>
+              >
+                Link projeto
+              </Link>
             </ServiceCard>
             <ServiceCard>
               <ServiceTitle>Projeto com Filtro de Produtos (NextJS)</ServiceTitle>
               <ServiceImage src="/projeto3.png" alt="Imagem 3" />
               <p>Esse projeto é as aulas que fiz de Next, aqui mostra diversos itens criados dentro de um arquivo "db.json", onde na navbar, fizemos que aparecesse somentes os produtos relacionados a determinada categoria.</p>
               <Link
-                  href="https://github.com/rafaelfsnT/aulaNext"
-                  target="_blank"
-                >
-                  Link projeto 
-                </Link>
+                href="https://github.com/rafaelfsnT/aulaNext"
+                target="_blank"
+              >
+                Link projeto
+              </Link>
             </ServiceCard>
 
           </ServiceContainer>
         </HomeSection>
 
         {/* Section Contato */}
-        <HomeSection id="contato">
-          <h1>Contato</h1>
-        </HomeSection>
+        <Section id="contato">
+          <Container>
+            {/* Lado Esquerdo - Informações */}
+            <InfoSection>
+              <h1>Entre em Contato</h1>
+              <InfoItem>
+                <MapPin size={22} /> Xambrê, PR - Brasil
+              </InfoItem>
+              <InfoItem>
+                <Mail size={22} />
+                <a href="mailto:rafaelf_santos08@outlook.com?subject=Contato%20via%20site">
+                  rafaelf_santos08@outlook.com
+                </a>
+              </InfoItem>
+
+              {/* Ícones sociais */}
+              <SocialIcons>
+                <SocialLink href="https://github.com/rafaelfsnT" target="_blank">
+                  <FontAwesomeIcon icon={faGithub} size="2x" />
+                </SocialLink>
+                <SocialLink href="https://www.linkedin.com/in/rafael-fassina-dos-santos-40805626a/" target="_blank">
+                  <FontAwesomeIcon icon={faLinkedin} size="2x" />
+                </SocialLink>
+                <SocialLink href="https://www.instagram.com/rafaelfsan/" target="_blank">
+                  <FontAwesomeIcon icon={faInstagram} size="2x" />
+                </SocialLink>
+              </SocialIcons>
+            </InfoSection>
+
+            {/* Lado Direito - Formulário */}
+            <FormSection>
+              <form action="https://formspree.io/f/xoveqala" method="POST">
+                <h2>Fale Conosco</h2>
+                <label style={{ fontSize: "16px", fontWeight: "bold" }}>Nome</label>
+                <StyledInput type="text" name="name" required />
+
+                <label style={{ fontSize: "16px", fontWeight: "bold" }}>Email</label>
+                <StyledInput type="email" name="email" required />
+
+                <label style={{ fontSize: "16px", fontWeight: "bold" }}>Mensagem</label>
+                <StyledTextarea name="message" rows={4} required />
+
+                <SubmitButton type="submit" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  Enviar Mensagem
+                </SubmitButton>
+              </form>
+            </FormSection>
+          </Container>
+        </Section>
       </Container>
+      <FooterContainer>
+        <SocialIconsFooter>
+          <IconLink href="mailto:rafaelf_santos08@outlook.com">
+            <FontAwesomeIcon icon={faEnvelope} />
+          </IconLink>
+          <IconLink href="https://github.com/rafaelfsnT" target="_blank">
+            <FontAwesomeIcon icon={faGithub} />
+          </IconLink>
+          <IconLink href="https://www.linkedin.com/in/rafael-fassina-dos-santos-40805626a/" target="_blank">
+            <FontAwesomeIcon icon={faLinkedin} />
+          </IconLink>
+          <IconLink href="https://www.instagram.com/rafaelfsan/" target="_blank">
+            <FontAwesomeIcon icon={faInstagram} />
+          </IconLink>
+        </SocialIconsFooter>
+        <FooterText>© {new Date().getFullYear()} Rafael Fassina dos Santos. Todos os direitos reservados.</FooterText>
+      </FooterContainer>
     </>
   );
 }
