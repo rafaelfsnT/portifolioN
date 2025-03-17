@@ -188,20 +188,6 @@ export const TextColumn = styled.div`
   }
 `;
 
-export const ImageColumn = styled.div`
-  flex: 1;
-  display: flex;
-  justify-content: flex-end; 
-  align-items: center;
-  margin-left: auto; 
-
-  @media (max-width: 768px) {
-    justify-content: center;
-    margin-left: 0;
-  }
-
-`;
-
 // Ícones
 export const Icons = styled.div`
   text-align: center;
