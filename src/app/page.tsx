@@ -18,7 +18,6 @@ import {
   Icons,
   HomeContent,
   TextColumn,
-  ImageColumn,
   NavbarContainer,
   NavbarLink,
   ServiceContainer,
@@ -148,21 +147,7 @@ export default function Home() {
               </Icons>
             </TextColumn>
 
-            <ImageColumn>
-              <motion.img
-                src="/memoji.png"
-                alt="Memoji"
-                width={300}
-                height={300}
-                style={{ borderRadius: "50%", cursor: "pointer" }}
-                animate={{ x: [-10, 10, -10] }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-            </ImageColumn>
+          
           </HomeContent>
         </HomeSection>
 
