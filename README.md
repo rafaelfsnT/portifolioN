@@ -8,17 +8,15 @@ Este é o meu portfólio pessoal desenvolvido com Next.js! Nele, você encontrar
 
 Antes de rodar o projeto, é necessário ter o Node.js e o npm instalados na sua máquina. Você pode verificar se já os tem instalados com os seguintes comandos:
 
-```bash
+```
 node -v
 npm -v
 ```
 # Instalar as Dependências
 Clone o repositório para sua máquina local:
-
-bash
-Copiar
-Editar
+```
 git clone https://github.com/seu-usuario/seu-repositorio.git
+```
 Navegue até o diretório do projeto:
 
 ```
