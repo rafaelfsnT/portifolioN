@@ -1,6 +1,20 @@
 import { motion } from 'framer-motion';
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+const tapAnimation = keyframes`
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+`;
+// Animação de hover (zoom suave)
+const hoverAnimation = keyframes`
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+`;
 
+const commonTextStyle = `
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #7F00FF;
+`;
 // Container principal
 export const Container = styled.div`
    background-color: #f4f4f4;
@@ -9,86 +23,9 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 
-export const NavbarContainer = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  padding: 10px 20px;     
-  background-color: #f4f4f4;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-// Logo estilizado
-export const NavbarLogo = styled.img`
-  height: 50px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.1);
-  }
-
-  @media (max-width: 768px) {
-    height: 40px;
-  }
-`;
-const tapAnimation = keyframes`
-  0% { transform: scale(1); }
-  50% { transform: scale(0.95); }
-  100% { transform: scale(1); }
-`;
-
-// Animação de hover (zoom suave)
-const hoverAnimation = keyframes`
-  0% { transform: scale(1); }
-  100% { transform: scale(1.1); }
-`;
-export const NavbarLink = styled.a`
-  color: #7F00FF;
-  font-size: 16px;
-  font-weight: 500;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  margin: 0 15px;
-  margin-left: 30px;
-  padding: 10px 15px;
-  text-decoration: none;
-  border: 2px solid transparent;
-  border-radius: 25px;
-  position: relative;
-  transition: color 0.3s ease, transform 0.3s ease;
-  cursor: pointer;
-
-  &:hover {
-    background: #7F00FF;
-    color: #fff;
-    border-color: #7F00FF;
-    animation: ${hoverAnimation} 0.2s ease-in-out forwards;
-  }
-
-  &:active {
-    animation: ${tapAnimation} 0.2s ease-in-out;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 16px;
-    margin: 0 10px;
-    padding: 8px 12px;
-  }
-`;
-
-const commonTextStyle = `
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  color: #7F00FF;
-`;
-
 // Estilizações Sections
 export const HomeSection = styled.section`
+
    display: flex;
   flex-direction: column;
   align-items: center;
@@ -131,8 +68,8 @@ export const HomeSection = styled.section`
   }
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    text-align: center;
+    padding: 60px 20px;
+  }
 
     h1 {
       font-size: 2rem;
@@ -142,7 +79,7 @@ export const HomeSection = styled.section`
       font-size: 1.1rem;
       padding: 0 10px;
     }
-  } 
+  
 `;
 
 export const HomeContent = styled.div`
@@ -159,6 +96,127 @@ export const HomeContent = styled.div`
   }
 `;
 
+export const NavbarContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 10px 20px;     
+  background-color: #f4f4f4;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 768px) {
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+`;
+
+export const NavbarLogo = styled.img`
+  height: 50px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    height: 40px;
+  }
+`;
+export const NavbarLink = styled.a`
+  color: #7F00FF;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin: 0 10px;
+  padding: 10px 15px;
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: 25px;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background: #7F00FF;
+    color: #fff;
+    border-color: #7F00FF;
+    animation: ${hoverAnimation} 0.2s ease-in-out forwards;
+  }
+
+  &:active {
+    animation: ${tapAnimation} 0.2s ease-in-out;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+    margin: 0 10px;
+    padding: 8px 12px;
+  }
+`;
+export const NavLinksWrapper = styled.div`
+  display: flex;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+export const HamburgerIcon = styled.div<{ isOpen: boolean }>`
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 22px;
+  cursor: pointer;
+
+  span {
+    height: 4px;
+    background: #7F00FF;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+
+  ${({ isOpen }) =>
+    isOpen &&
+    css`
+      span:nth-child(1) {
+        transform: rotate(45deg) translateY(9px);
+      }
+      span:nth-child(2) {
+        opacity: 0;
+      }
+      span:nth-child(3) {
+        transform: rotate(-45deg) translateY(-9px);
+      }
+    `}
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+`
+
+export const MobileMenu = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  background: #fff;
+  width: 100%;
+  padding: 20px 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+`
 // Estilização da Coluna de Texto
 export const TextColumn = styled.div`
   display: flex;
