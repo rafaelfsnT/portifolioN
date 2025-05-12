@@ -15,6 +15,8 @@ const commonTextStyle = `
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color: #7F00FF;
 `;
+
+
 // Container principal
 export const Container = styled.div`
    background-color: #f4f4f4;

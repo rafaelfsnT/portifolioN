@@ -29,7 +29,6 @@ export const Header = () => {
       <NavLinksWrapper className="desktop">
         <NavbarLink href="#sobre">Sobre</NavbarLink>
         <NavbarLink href="#habilidades">Habilidades</NavbarLink>
-        <NavbarLink href="#softskills">Soft Skills</NavbarLink>
         <NavbarLink href="#servicos">Serviços</NavbarLink>
         <NavbarLink href="#contato">Contato</NavbarLink>
       </NavLinksWrapper>
