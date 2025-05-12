@@ -1,6 +1,4 @@
 "use client";
-import { Header } from "./components/header";
-import { Hero } from "./components/hero";
 import { Sobre } from "./components/Sobre";
 import Habilidades from "./components/Habilidades";
 import Servicos from "./components/Servicos";
@@ -8,6 +6,8 @@ import Contato from "./components/Contato";
 import Head from "next/head";
 import Footer from "./components/Footer";
 import { Container } from "@/styles/style";
+import { Hero } from "./components/Hero";
+import { Header } from "./components/Header";
 
 export default function Home() {
   // Função para rolar para uma seção sem alterar a URL
@@ -26,7 +26,7 @@ export default function Home() {
       </Head>
 
       <Container>
-        <Header onNavigate={scrollToSection} />
+        <Header  />
         <Hero />
         <Sobre />
         <Habilidades />

@@ -86,7 +86,7 @@ export default function Contato() {
                         </SubmitButton>
 
                         {status === "success" && (
-                            <p style={{ marginTop: "15px", color: "green" }}>
+                            <p style={{ marginTop: "15px", color: "green", textAlign: "center" }}>
                                 Sua mensagem foi enviada com sucesso!
                             </p>
                         )}
