@@ -18,7 +18,7 @@ export const Header = () => {
 
   return (
     <NavbarContainer>
-      <NavbarLogo src="/logo.png" alt="Logo" />
+      <NavbarLogo src="/logo.png" alt="Logo"  />
 
       <HamburgerIcon onClick={toggleMenu} isOpen={menuOpen}>
         <span />

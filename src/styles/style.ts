@@ -275,14 +275,18 @@ export const ServiceContainer = styled.section`
   justify-content: space-between;
   gap: 20px;
 `;
-
 export const ServiceCard = styled.div`
   width: 30%;
+  height: 100%; /* se estiver em um grid que controla altura */
+  min-height: 450px; /* opcional: força altura mínima igual pra todos */
   text-align: center;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1) ;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
+
+  display: flex;
+  flex-direction: column;
 
   a {
     color: aliceblue;
@@ -293,20 +297,23 @@ export const ServiceCard = styled.div`
     font-size: 1.2rem;
     display: inline-block;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    margin-top: auto; 
-    
+    margin-top: auto;
+
     &:hover {
       animation: ${hoverAnimation} 0.3s ease-in-out forwards;
-      background-color: #6a00cc; 
+      background-color: #6a00cc;
     }
   }
 `;
 
+
 export const ServiceImage = styled.img`
-  width: 100%;
-  height: auto;
+     width: 100%;
+  height: 180px;
+  object-fit: cover;
   border-radius: 8px;
-`;
+  margin-bottom: 1rem;
+  `;
 
 export const ServiceTitle = styled.h3`
 color: #7F00FF;
